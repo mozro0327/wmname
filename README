@@ -1,0 +1,24 @@
+setwmname - sets the WM name
+============================
+Sets the EWMH WM name property to a specified name.
+
+
+Requirements
+------------
+In order to build setwmname you need the Xlib header files.
+
+
+Installation
+------------
+Edit config.mk to match your local setup (swarp is installed into
+the /usr/local namespace by default).
+
+Afterwards enter the following command to build and install swarp (if
+necessary as root):
+
+    make clean install
+
+
+Running setwmname
+-----------------
+Simply invoke 'setwmname <name>'.
