@@ -21,7 +21,7 @@ int
 main(int argc, char **argv) {
 	Display *dpy;
 	Window root, dummy;
-	Atom net_supporting_wm_check, net_wm_name, utf8_string;
+	Atom netwmcheck, netwmname, utf8_string;
 
 	if(argc == 2) {
 		if(!strncmp(argv[1], "-v", 3))
@@ -31,13 +31,13 @@ main(int argc, char **argv) {
 		eprint("usage: setwmname <name> [-v]\n");
 
 	if(!(dpy = XOpenDisplay(0)))
-		eprint("dmenu: cannot open display\n");
+		eprint("setwmname: cannot open display\n");
 	root = DefaultRootWindow(dpy);
-	net_supporting_wm_check = XInternAtom(dpy, "_NET_SUPPORTING_WM_CHECK", False);
-	net_wm_name = XInternAtom(dpy, "_NET_WM_NAME", False);
+	netwmcheck = XInternAtom(dpy, "_NET_SUPPORTING_WM_CHECK", False);
+	netwmname = XInternAtom(dpy, "_NET_WM_NAME", False);
 	utf8_string = XInternAtom(dpy, "UTF8_STRING", False);
-	XChangeProperty(dpy, root, net_supporting_wm_check, XA_WINDOW, 32, PropModeReplace, (unsigned char *)&root, 1);
-	XChangeProperty(dpy, root, net_wm_name, utf8_string, 8, PropModeReplace, (unsigned char *)argv[1], strlen(argv[1]));
+	XChangeProperty(dpy, root, netwmcheck, XA_WINDOW, 32, PropModeReplace, (unsigned char *)&root, 1);
+	XChangeProperty(dpy, root, netwmname, utf8_string, 8, PropModeReplace, (unsigned char *)argv[1], strlen(argv[1]));
 	XSync(dpy, False);
 	XCloseDisplay(dpy);
 	return 0;
