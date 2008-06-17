@@ -1,5 +1,5 @@
-# setwmname version
-VERSION = 0.1
+# wmname version
+VERSION = 0.2
 
 # Customize below to fit your system
 
@@ -15,10 +15,9 @@ INCS = -I. -I/usr/include -I${X11INC}
 LIBS = -L/usr/lib -lc -L${X11LIB} -lX11
 
 # flags
-CFLAGS = -Os ${INCS} -DVERSION=\"${VERSION}\"
-LDFLAGS = ${LIBS}
-#CFLAGS = -g -Wall -O2 ${INCS} -DVERSION=\"${VERSION}\"
-#LDFLAGS = -g ${LIBS}
+CPPFLAGS = -DVERSION=\"${VERSION}\"
+CFLAGS = -std=c99 -pedantic -Wall -Os ${INCS} ${CPPFLAGS}
+LDFLAGS = -s ${LIBS}
 
 # compiler and linker
 CC = cc
