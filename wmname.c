@@ -27,12 +27,12 @@ main(int argc, char **argv) {
 	Atom netwmcheck, netwmname, utf8_string, real;
 
 	if(argc > 2)
-		eprint("usage: setwmname [name] [-v]\n");
+		eprint("usage: wmname [name] [-v]\n");
 	else if(argc == 2 && !strncmp(argv[1], "-v", 3))
-		eprint("setwmname-"VERSION", © 2008 Anselm R Garbe\n", stdout);
+		eprint("wmname-"VERSION", © 2008 Anselm R Garbe\n", stdout);
 
 	if(!(dpy = XOpenDisplay(0)))
-		eprint("setwmname: cannot open display\n");
+		eprint("wmname: cannot open display\n");
 	root = DefaultRootWindow(dpy);
 	netwmcheck = XInternAtom(dpy, "_NET_SUPPORTING_WM_CHECK", False);
 	netwmname = XInternAtom(dpy, "_NET_WM_NAME", False);
