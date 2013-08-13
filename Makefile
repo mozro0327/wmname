@@ -32,7 +32,7 @@ clean:
 dist: clean
 	@echo creating dist tarball
 	@mkdir -p wmname-${VERSION}
-	@cp -R LICENSE Makefile README config.mk ${SRC} wmname-${VERSION}
+	@cp -R LICENSE Makefile README config.mk wmname.1 ${SRC} wmname-${VERSION}
 	@tar -cf wmname-${VERSION}.tar wmname-${VERSION}
 	@gzip wmname-${VERSION}.tar
 	@rm -rf wmname-${VERSION}
@@ -42,6 +42,10 @@ install: all
 	@mkdir -p ${DESTDIR}${PREFIX}/bin
 	@cp -f wmname ${DESTDIR}${PREFIX}/bin
 	@chmod 755 ${DESTDIR}${PREFIX}/bin/wmname
+	@echo installing manual page to ${DESTDIR}${MANPREFIX}/man1
+	@mkdir -p ${DESTDIR}${MANPREFIX}/man1
+	@sed "s/VERSION/${VERSION}/g" < wmname.1 > ${DESTDIR}${MANPREFIX}/man1/wmname.1
+	@chmod 644 ${DESTDIR}${MANPREFIX}/man1/wmname.1
 
 uninstall:
 	@echo removing executable file from ${DESTDIR}${PREFIX}/bin

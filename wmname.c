@@ -29,7 +29,7 @@ main(int argc, char **argv) {
 	if(argc > 2)
 		eprint("usage: wmname [name] [-v]\n");
 	else if(argc == 2 && !strncmp(argv[1], "-v", 3))
-		eprint("wmname-"VERSION", © 2008 Anselm R Garbe\n", stdout);
+		eprint("wmname-"VERSION", © 2008-2013 Anselm R Garbe\n", stdout);
 
 	if(!(dpy = XOpenDisplay(0)))
 		eprint("wmname: cannot open display\n");
